@@ -1,0 +1,119 @@
+.p-10 {
+  padding: 10px !important;
+}
+
+.header {
+  background: #007bff;
+  color: white;
+
+  .btn {
+    color: white;
+  }
+}
+
+.todo-lists {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.todo-list {
+  width: calc(20% - 20px);
+  margin: 10px;
+  position: relative;
+}
+
+.todo-list-wrapper {
+  box-shadow: #999 0 0 15px;
+}
+
+h2 {
+  display: flex;
+  align-items: center;
+
+  .title-txt {
+    font-size: 20px;
+    line-height: 1.4;
+    display: block;
+    width: calc(100% - 60px);
+  }
+}
+
+.left-group {
+  width: calc(100% - 70px);
+
+  .form-control {
+    width: 100%;
+  }
+}
+
+.list-items {
+  list-style: none;
+  margin: 0;
+  margin-top: 10px;
+  padding: 0;
+
+  li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+  }
+
+  input[type='checkbox'] {
+    margin-right: 10px;
+  }
+
+  .btn-del {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    cursor: pointer;
+  }
+}
+
+.btn {
+  margin: 0;
+  padding: 0 10px;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+.btn-add {
+  color: white;
+  position: absolute;
+  top: 10px;
+  right: 0;
+}
+
+.btn-trash {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+}
+
+.form-control {
+  &:focus {
+    box-shadow: none;
+    outline: none;
+  }
+}
+
+.completed {
+  color: gray;
+  text-decoration: line-through;
+}
+
+.form-edit {
+  display: flex;
+  align-items: center;
+}
+
+.btn-save {
+  font-size: 25px;
+}
+
+.form-add-new-item {
+  margin-top: 10px;
+}

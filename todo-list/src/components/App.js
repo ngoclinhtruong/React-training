@@ -1,13 +1,10 @@
 import React from 'react';
-import CreateListForm from './createListForm';
+import TodoListBoard from './TodoListBoard';
+import '../App.scss';
 
 class App extends React.Component {
   render() {
-    return (
-      <div>
-        <CreateListForm />
-      </div>
-    );
+    return <TodoListBoard />;
   }
 }
 
