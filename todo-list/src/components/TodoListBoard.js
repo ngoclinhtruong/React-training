@@ -8,11 +8,15 @@ class TodoListBoard extends React.Component {
     this.state = {
       todoLists: [],
       textName: '',
+      isInputEmpty: false,
     };
   }
 
   handleChange = (e) => {
-    this.setState({ textName: e.target.value });
+    this.setState({
+      textName: e.target.value,
+      isInputEmpty: false,
+    });
   };
 
   handleSubmitTodoBoard = (e) => {
@@ -23,10 +27,15 @@ class TodoListBoard extends React.Component {
       textName: this.state.textName,
     };
 
-    this.setState({
-      todoLists: [...this.state.todoLists, newList],
-      textName: '',
-    });
+    if (this.state.textName !== '') {
+      this.setState({
+        todoLists: [...this.state.todoLists, newList],
+        textName: '',
+        isInputEmpty: false,
+      });
+    } else {
+      this.setState({ isInputEmpty: true });
+    }
   };
 
   handleDeleteList = (todoListNameId) => {
@@ -53,16 +62,21 @@ class TodoListBoard extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="create-list">
         <form onSubmit={this.handleSubmitTodoBoard}>
-          <div className="form-group d-flex m-2">
+          <div className="form-group create-list-form d-flex m-2">
             <input
               type="text"
               placeholder="New Todo List"
-              className="form-control mr-2"
+              className={`form-control mr-2 ${
+                this.state.isInputEmpty ? 'error' : null
+              }`}
               value={this.state.textName}
               onChange={this.handleChange}
             />
+            {this.state.isInputEmpty ? (
+              <div className="error">Please add text to the input</div>
+            ) : null}
             <input
               type="submit"
               className="form-control btn btn-primary w-25"

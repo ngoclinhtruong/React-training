@@ -2,6 +2,27 @@
   padding: 10px !important;
 }
 
+.hide {
+  display: none !important;
+}
+
+.create-list {
+  position: relative;
+
+  .form-control.error {
+    font-size: 16px;
+    border-color: red;
+  }
+}
+
+.create-list-form {
+  div.error {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+  }
+}
+
 .header {
   background: #007bff;
   color: white;
@@ -14,12 +35,21 @@
 .todo-lists {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .todo-list {
   width: calc(20% - 20px);
   margin: 10px;
   position: relative;
+
+  @media (max-width: 1200px) {
+    width: calc(50% - 20px);
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 }
 
 .todo-list-wrapper {
@@ -116,4 +146,10 @@ h2 {
 
 .form-add-new-item {
   margin-top: 10px;
+  position: relative;
+}
+
+.error {
+  font-size: 12px;
+  color: red;
 }

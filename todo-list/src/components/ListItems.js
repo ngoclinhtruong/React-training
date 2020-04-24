@@ -15,13 +15,14 @@ class ListItems extends React.Component {
   }
 
   handleChange = (e) => {
-    this.setState({ todoItem: e.target.value });
+    this.setState({ todoItem: e.target.value, isInputEmpty: false });
   };
 
   hideInput = (e) => {
     if (e.keyCode === 27) {
       this.setState({
         isInputVisible: false,
+        isInputEmpty: false,
       });
     }
   };
@@ -34,12 +35,17 @@ class ListItems extends React.Component {
       todoItem: this.state.todoItem,
     };
 
-    this.setState({
-      listItems: [...this.state.listItems, newItem].sort((a, b) =>
-        a.todoItem > b.todoItem ? 1 : -1
-      ),
-      todoItem: '',
-    });
+    if (this.state.todoItem !== '') {
+      this.setState({
+        listItems: [...this.state.listItems, newItem].sort((a, b) =>
+          a.todoItem > b.todoItem ? 1 : -1
+        ),
+        todoItem: '',
+        isInputEmpty: false,
+      });
+    } else {
+      this.setState({ isInputEmpty: true });
+    }
   };
 
   handleAddBtnClick = () => {
@@ -89,12 +95,18 @@ class ListItems extends React.Component {
             <input
               type="text"
               placeholder="New Item"
-              className="form-control"
+              className={`form-control ${
+                this.state.isInputEmpty ? 'error' : null
+              }`}
               value={this.state.todoItem}
               ref={this.inputItemRef}
               onChange={this.handleChange}
               onKeyDown={this.hideInput}
             />
+
+            {this.state.isInputEmpty ? (
+              <div className="error">Please add text to the input</div>
+            ) : null}
           </form>
         ) : null}
 
